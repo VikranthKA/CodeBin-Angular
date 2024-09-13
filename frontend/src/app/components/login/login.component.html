@@ -1,1 +1,17 @@
-<h2>login works!</h2>
+<form action="" class="form-container" [formGroup]="loginForm">
+    <h3>Please Login!</h3>
+    <input type="email" 
+           name="email" 
+           id="email" 
+           placeholder="johndoe@gmail.com"
+           [formControl]="email"
+    />
+    <input type="password" 
+    name="text" 
+    id="text" 
+    placeholder="secret@123"
+    [formControl]="email"
+    />
+
+
+</form>
