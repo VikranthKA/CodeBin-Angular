@@ -1,0 +1,17 @@
+<form action="" class="form-container" [formGroup]="codeForm">
+    <h3 class="login-text">Create code snippet</h3>
+    <input type="email" name="email" id="email" placeholder="title" [formControl]="title" />
+    <h5 class="error" [hidden]="title.valid || title.untouched">Enter the title</h5>
+    <textarea type="password" name="text" id="text" placeholder="code {
+
+    }" [formControl]="code" ></textarea>
+    <h5 class="error" [hidden]="code.valid || code.untouched">Enter the code</h5>
+    <div class="btn-group">
+
+        <button class="btn-success" (click)="submit()" [disabled]="codeForm.invalid">Create code</button>
+    </div>
+
+
+
+
+</form>

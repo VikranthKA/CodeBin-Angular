@@ -29,9 +29,9 @@
     font-weight: bold;
 }
 
-input{
+input,textarea{
     width: 70%;
-    height: 50px;
+    height: auto;
     font-family: 'Courier New', Courier, monospace;
     margin:0 auto;
     font-size: 20px;
@@ -42,7 +42,7 @@ input{
 
 }
 
-input:focus{
+textarea,input:focus{
     border-color:rgba(160,219,21);
     outline: none;
 }
