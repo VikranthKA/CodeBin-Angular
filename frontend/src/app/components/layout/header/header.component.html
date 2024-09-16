@@ -2,10 +2,15 @@
     <nav class="nav">
         <section class="codebin"><a routerLink="/">CodeBin</a></section>
         <ul>
-            <li><a  routerLink="/createbin" routerLinkActive="active">CreateBin</a></li>
+            @if(authService.isAuthenticated()){
+    <li><a  routerLink="/createbin" routerLinkActive="active">CreateBin</a></li>
+    <li (click)="authService.logout()">Logout</li>
 
-            <li><a  routerLink="/login" routerLinkActive="active">Login</a></li>
-            <li><a  routerLink="/register" routerLinkActive="active">Register</a></li>
+}@else{
+
+    <li><a  routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li><a  routerLink="/register" routerLinkActive="active">Register</a></li>
+}
             <li><a  routerLink="/about" routerLinkActive="active">About</a></li>
 
         </ul>

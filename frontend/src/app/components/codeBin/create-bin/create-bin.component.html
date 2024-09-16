@@ -1,8 +1,8 @@
 <form action="" class="form-container" [formGroup]="codeForm">
-    <h3 class="login-text">Create code snippet</h3>
-    <input type="email" name="email" id="email" placeholder="title" [formControl]="title" />
+    <h3 class="text">Create code snippet</h3>
+    <input type="text" name="text" id="text" placeholder="Title" [formControl]="title" />
     <h5 class="error" [hidden]="title.valid || title.untouched">Enter the title</h5>
-    <textarea type="password" name="text" id="text" placeholder="code {
+    <textarea type="text" name="code" id="code" placeholder="code {
 
     }" [formControl]="code" ></textarea>
     <h5 class="error" [hidden]="code.valid || code.untouched">Enter the code</h5>

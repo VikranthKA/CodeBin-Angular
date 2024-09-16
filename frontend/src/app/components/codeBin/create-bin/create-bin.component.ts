@@ -1,5 +1,7 @@
+import { DbService } from './../../../services/db.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Snippet } from '../../../../models/snippet';
 
 @Component({
   selector: 'app-create-bin',
@@ -9,6 +11,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './create-bin.component.css'
 })
 export class CreateBinComponent {
+
+  constructor(private dbService:DbService){}
   title=new FormControl("",[
     Validators.required,
     Validators.minLength(2),
@@ -26,8 +30,9 @@ export class CreateBinComponent {
     code:this.code
   })
 
-  submit():void{
-    console.log(this.codeForm.value)
+  async submit(){
+
+    await this.dbService.createCodeSnippet(this.codeForm.value as Snippet)
   }
 
 }

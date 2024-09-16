@@ -30,6 +30,7 @@ export class LoginComponent {
   login():void{
     console.log(this.loginForm.value)
     this.authService.loginUser(this.loginForm.value.email!,this.loginForm.value.password!)
+    
   }
 
   forgotPassword():any{

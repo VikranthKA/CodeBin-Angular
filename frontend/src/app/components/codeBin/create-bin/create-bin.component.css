@@ -1,110 +1,91 @@
-.form-container{
-    width: 40%;
-    height: auto;
-    margin-top:60px;
-    border:1px solid rgb(160, 219, 21);
+.form-container {
+    width: 50%;
+    padding: 20px;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: auto;
+    border: 2px solid var(--blue);
+    background-color: #282c34;
+    border-radius: 10px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: box-shadow 0.6s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    gap:6px;
-    padding: 30px;
+
+}
+
+.form-container:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+}
+
+h3.text {
+    color: #61dafb;
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #1c1f26;
+    border: 1px solid #61dafb;
     border-radius: 8px;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-    transition:box-shadow 0.9s ease-in-out;
-}
-.form-container:hover{
-    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-}
-
-.login-text{
-    margin:0 0 10px 0;
-    text-align: center;
-    color: #121212;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.8rem;
-    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    transition: border 0.3s, box-shadow 0.3s;
 }
 
-input,textarea{
-    width: 70%;
-    height: auto;
-    font-family: 'Courier New', Courier, monospace;
-    margin:0 auto;
-    font-size: 20px;
-    padding-left: 20px;
-    border:1px solid #ccc;
-    border-radius: 6px;
-    transition: border 0.6s,box-shadow 0.6s;
-
+textarea {
+    height: 150px;
 }
 
-textarea,input:focus{
-    border-color:rgba(160,219,21);
+input:focus, textarea:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     outline: none;
 }
 
-.error{
-    margin:10px 0 6px 0px;
-    color:rgb(231, 25, 25);
-    font-size: 15px;
+.error {
+    color: #ff6347;
     font-family: 'Courier New', Courier, monospace;
-
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-
-
-button{
-    padding: 10px 20px;
+button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
     border: none;
-    border-radius: 3px;
-    letter-spacing: 1.2px;
-    background-color: white;
+    border-radius: 5px;
     cursor: pointer;
-    color: rgb(25, 12, 12);
-
+    transition: background-color 0.3s;
 }
 
-.btn-group{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
+.btn-success {
+    background-color: #61dafb;
+    color: #282c34;
 }
 
+.btn-success:hover {
+    background-color: #21a1f1;
+}
 
-
-.btn-success:disabled{
+.btn-success:disabled {
+    background-color: #61dafb;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
-.btn-success{
-    background-color: rgb(22, 227, 22);
+.btn-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-.btn-success:hover{
-    background-color: rgb(10, 245, 10);
-}
-
-.btn-success:active{
-    background-color: rgb(22, 227, 22);
-}
-
-
-.btn-forgot-password{
-    background-color: rgb(20, 218, 228);
-
-}
-
-.btn-forgot-password:hover{
-    background-color: rgb(79, 231, 239);
-
-}
-
-.btn-forgot-password:active{
-    background-color: rgb(20, 218, 228);
-
-}
