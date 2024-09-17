@@ -7,11 +7,14 @@ import { CreateBinComponent } from './components/codeBin/create-bin/create-bin.c
 import { authGuard } from './auth.guard';
 import { ViewSnippetComponent } from './components/view-snippet/view-snippet.component';
 import { HomeComponent } from './components/home/home.component';
+import { DefferdemoComponent } from './components/defferdemo/defferdemo.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
 
     {path:"login",component:LoginComponent},
+    {path:"demo",component:DefferdemoComponent},
+
     {path:"register",component:RegisterComponent},
     {path:"createbin",component:CreateBinComponent,canActivate:[authGuard]},
     {path:"about",loadComponent:()=>import("./pages/about/about.component").then(mod=>mod.AboutComponent)},

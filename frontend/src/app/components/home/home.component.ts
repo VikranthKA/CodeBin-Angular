@@ -6,15 +6,22 @@ import { DbService } from '../../services/db.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink], // Correct imports for standalone component
+  imports: [CommonModule, RouterLink], 
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'] // Corrected 'styleUrl' to 'styleUrls'
+  styleUrls: ['./home.component.css'] 
 })
 export class HomeComponent {
 
   constructor(private dbService: DbService) {}
-
   items: any[] = [];
+
+  async deleteSnippetByIdHome(snippedId:string){
+    await this.dbService.deleteSnippetById(snippedId)
+    const filterSnipped = this.items.filter(item=>item.id!==snippedId)
+    this.items = filterSnipped
+
+  }
+
 
   ngOnInit() {
     this.dbService.getAllSnippet().then((data: any) => {

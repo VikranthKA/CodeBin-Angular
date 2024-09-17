@@ -18,7 +18,7 @@ export class RegisterComponent {
   register(regForm:NgForm){
     console.log(regForm.value)
     this.authService.registerUser(regForm.value.email,regForm.value.password)
-    // this.router.navigate(["/login"])
+    this.router.navigate(["/login"])
 
   }
 

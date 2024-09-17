@@ -5,9 +5,13 @@
         </li>
 
         <li *ngFor="let item of items; track:item?.id" class="snippet-item">
-            <a [routerLink]="['/snippet', item.id]" class="snippet-title">
-                {{ item?.title }}
-            </a>
+            <div class="loop-container">
+                <a [routerLink]="['/snippet', item.id]" class="snippet-title">
+                    {{ item?.title }}
+                </a>
+                <button class="btn-delete" (click)="deleteSnippetByIdHome(item?.id)">Delete</button>
+
+            </div>
             <p class="snippet-preview">
                 {{ item?.code | slice:0:100 }}
             </p>
