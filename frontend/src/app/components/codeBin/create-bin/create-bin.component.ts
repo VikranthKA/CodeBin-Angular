@@ -1,3 +1,4 @@
+import { UpdateSnippetService } from './../../../services/update-snippet.service';
 import { DbService } from './../../../services/db.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,48 +10,69 @@ import { ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './create-bin.component.html',
-  styleUrl: './create-bin.component.css'
+  styleUrls: ['./create-bin.component.css'] // Corrected to `styleUrls` (not `styleUrl`)
 })
 export class CreateBinComponent {
 
-  constructor(private dbService:DbService,    private route:ActivatedRoute,
-  ){}
+  edit: boolean = false;
+  snippetId: string = "";
 
-  edit:boolean=true
+  title = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2)
+  ]);
 
-  ngOnInit(){
-    if(this.edit){
-      const snippetId = this.route.snapshot.paramMap.get("snipppedId")
-      this.dbService.getSnippetById(snippetId!).then((data:any)=>{
-        console.log(data,"edit")
-    })
-    .catch(error=>console.log(error))
+  code = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2)
+  ]);
 
-      // this.title = 
+  codeForm = new FormGroup({
+    title: this.title,
+    code: this.code
+  });
+
+  constructor(
+    private dbService: DbService,
+    private updateSnippet: UpdateSnippetService,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.snippetId = params.get('snippetId') || '';
+      this.edit = !!this.snippetId;
+
+      if (this.snippetId) {
+        this.dbService.getSnippetById(this.snippetId).then((data: any) => {
+          this.codeForm.patchValue({
+            title: data.title,
+            code: data.code
+          });
+        }).catch(error => {
+          console.error('Error fetching snippet:', error);
+        });
+      }
+    });
+  }
+
+  async updateSnippetById() {
+    if (this.codeForm.valid) {
+      try {
+        await this.dbService.updateSnippetById(this.snippetId, this.codeForm.value as Snippet);
+      } catch (error) {
+        console.error('Error updating snippet:', error);
+      }
     }
   }
 
-
-  title=new FormControl("",[
-    Validators.required,
-    Validators.minLength(2),
-
-
-  ])
-
-  code= new FormControl("",[
-    Validators.required,
-    Validators.minLength(2),
-  ])
-
-  codeForm = new FormGroup({
-    title:this.title,
-    code:this.code
-  })
-
-  async submit(){
-
-    await this.dbService.createCodeSnippet(this.codeForm.value as Snippet)
+  async submit() {
+    if (this.codeForm.valid) {
+      try {
+        await this.dbService.createCodeSnippet(this.codeForm.value as Snippet);
+      } catch (error) {
+        console.error('Error creating snippet:', error);
+      }
+    }
   }
-
 }

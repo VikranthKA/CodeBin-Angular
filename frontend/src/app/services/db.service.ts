@@ -75,16 +75,13 @@ export class DbService {
   }
 
 
-  async updateSnippetById(snippedId: string, snippet: {
-    title: "",
-    code: "",
-    id:"",
-    by:""
-
-  }) {
+  async updateSnippetById(snippedId: string, snippet: any) {
     try {
 
-      await setDoc(doc(this.db, "snipped", snippedId), snippet);
+      await setDoc(doc(this.db, "snippet", snippedId), snippet);
+      console.log("updatedSuccessfully")
+      this.router.navigate(["/"])
+
     } catch (error) {
       console.log(error,"error")
     }

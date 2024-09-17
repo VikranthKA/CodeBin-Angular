@@ -17,6 +17,8 @@ export const routes: Routes = [
 
     {path:"register",component:RegisterComponent},
     {path:"createbin",component:CreateBinComponent,canActivate:[authGuard]},
+
+    { path: 'createbin/:snippetId', component: CreateBinComponent },
     {path:"about",loadComponent:()=>import("./pages/about/about.component").then(mod=>mod.AboutComponent)},
     {path:"snippet/:snippedId",component:ViewSnippetComponent},
 

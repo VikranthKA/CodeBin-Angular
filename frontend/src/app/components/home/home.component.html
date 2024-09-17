@@ -9,7 +9,14 @@
                 <a [routerLink]="['/snippet', item.id]" class="snippet-title">
                     {{ item?.title }}
                 </a>
-                <button class="btn-delete" (click)="deleteSnippetByIdHome(item?.id)">Delete</button>
+                <div class="btn-group">
+
+                    <button class="btn-update" [routerLink]="['/createbin', item.id]">
+                        Edit
+                      </button>
+                      
+                    <button class="btn-delete" (click)="deleteSnippetByIdHome(item?.id)">Delete</button>
+                </div>
 
             </div>
             <p class="snippet-preview">

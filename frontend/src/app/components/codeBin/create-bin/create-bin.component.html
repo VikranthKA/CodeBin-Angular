@@ -1,17 +1,25 @@
-<form action="" class="form-container" [formGroup]="codeForm">
-    <h3 class="text">Create code snippet</h3>
-    <input type="text" name="text" id="text" placeholder="Title" [formControl]="title" />
-    <h5 class="error" [hidden]="title.valid || title.untouched">Enter the title</h5>
-    <textarea type="text" name="code" id="code" placeholder="code {
-
-    }" [formControl]="code" ></textarea>
-    <h5 class="error" [hidden]="code.valid || code.untouched">Enter the code</h5>
+<form class="form-container" [formGroup]="codeForm">
+    <h3 class="text">{{ edit ? 'Edit code snippet' : 'Create code snippet' }}</h3>
+    
+    <input type="text" id="text" placeholder="Title" formControlName="title" />
+    <h5 class="error" *ngIf="title.invalid && title.touched">Enter a valid title</h5>
+    
+    <textarea id="code" placeholder="Code" formControlName="code"></textarea>
+    <h5 class="error" *ngIf="code.invalid && code.touched">Enter valid code</h5>
+    
     <div class="btn-group">
+        @if(edit){
 
-        <button class="btn-success" (click)="submit()" [disabled]="codeForm.invalid">Create code</button>
+            <button class="btn-success"  (click)="updateSnippetById()" [disabled]="codeForm.invalid">
+              Update code
+            </button>
+        }@else {
+
+            <button class="btn-success"  (click)="submit()" [disabled]="codeForm.invalid">
+              Create code
+            </button>
+        }
+  
     </div>
-
-
-
-
-</form>
+  </form>
+  

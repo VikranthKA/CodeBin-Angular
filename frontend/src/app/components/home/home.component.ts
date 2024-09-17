@@ -1,6 +1,7 @@
+import { UpdateSnippetService } from './../../services/update-snippet.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf, ngFor
-import { RouterLink } from '@angular/router'; // Import RouterLink for router navigation
+import { Router, RouterLink } from '@angular/router'; // Import RouterLink for router navigation
 import { DbService } from '../../services/db.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { DbService } from '../../services/db.service';
 })
 export class HomeComponent {
 
-  constructor(private dbService: DbService) {}
+  constructor(private dbService: DbService,private updateSnippetService:UpdateSnippetService,private router:Router) {}
   items: any[] = [];
 
   async deleteSnippetByIdHome(snippedId:string){
@@ -21,6 +22,11 @@ export class HomeComponent {
     this.items = filterSnipped
 
   }
+
+
+
+
+  
 
 
   ngOnInit() {
