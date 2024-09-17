@@ -78,7 +78,7 @@ export class DbService {
   async updateSnippetById(snippedId: string, snippet: any) {
     try {
 
-      await setDoc(doc(this.db, "snippet", snippedId), snippet);
+      await setDoc(doc(this.db, "snippet", snippedId), snippet)
       console.log("updatedSuccessfully")
       this.router.navigate(["/"])
 

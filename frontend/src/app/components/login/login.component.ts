@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
   constructor(private authService:AuthService){}
   email=new FormControl("",[
@@ -32,6 +33,8 @@ export class LoginComponent {
     this.authService.loginUser(this.loginForm.value.email!,this.loginForm.value.password!)
     
   }
+
+  signInWithGoogle =()=>this.authService.signInWithGoogle()
 
   forgotPassword():any{
 

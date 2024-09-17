@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { getAuth, onAuthStateChanged,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { getAuth, onAuthStateChanged,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { firebaseAuth } from '../../firebase/firebaseConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private uid?:string;
+
 
   constructor(private router:Router) { 
     const auth = getAuth()
@@ -65,6 +67,10 @@ export class AuthService {
       alert("Error while loggin")
     })
   }
+
+  signInWithGoogle = () => signInWithPopup(firebaseAuth, new GoogleAuthProvider())
+  
+
 
 
   logout(){

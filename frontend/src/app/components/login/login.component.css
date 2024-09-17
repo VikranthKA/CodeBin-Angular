@@ -68,6 +68,34 @@ button{
 
 }
 
+.google-sign-in{
+    width: 62%;
+    border: 2px solid rgb(40, 191, 225);
+    border-radius: 6px;
+
+
+}
+.google-icon{
+    background-color: red;
+
+}
+
+.google-icon {
+    color: #4285F4;
+    font-size: 24px; 
+    transition: transform 0.3s ease; 
+}
+
+.google-icon:hover {
+    color: #DB4437; 
+    transform: scale(1.2); 
+}
+
+.google-icon:active {
+    transform: scale(1.1); 
+}
+
+
 .btn-group{
     margin-top: 20px;
     display: flex;
